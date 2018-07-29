@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ChalkCouture"
+             vm:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:b="clr-namespace:ChalkCouture.Behaviours"
+             x:Class="ChalkCouture.Views.MenuView">
+    <ContentPage.Content>
+        <ListView SeparatorVisibility="None" HasUnevenRows="true" ItemsSource="{Binding MenuItems,Mode=TwoWay}" 
+                  b:ItemTappedCommandListView.ItemTappedCommand="{Binding OnMenuSelectedCommand}">
+            <ListView.Header>
+                <Grid BackgroundColor="#004064">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="10"/>
+                    </Grid.RowDefinitions>
+                    <Image HeightRequest="50" WidthRequest="50" Grid.Column="1" Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center"
+                        Source="http://o1o7n13lbjs48rop542iunx3.wpengine.netdna-cdn.com/wp-content/uploads/2016/08/Craig-Andrew-300x300.png"/>
+                    <Label Grid.Column="1" Grid.Row="2" TextColor="White" Text="O" Style="{DynamicResource SubtitleStyle}" />
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Margin="0,4,0,0" Padding="15,10" HorizontalOptions="FillAndExpand">
+                            <!--<Image Source="{Binding Icon}" VerticalOptions="Center" HeightRequest="20" WidthRequest="20"/>-->
+                            <Label VerticalOptions="FillAndExpand" Margin="10,0,0,0" VerticalTextAlignment="Center" Text="{Binding Title}" FontSize="Medium"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>

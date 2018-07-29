@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ChalkCouture"
+             vm:ViewModelLocator.AutoWireViewModel="True" Title="Settings"
+             x:Class="ChalkCouture.Views.SettingsView">
+    <ContentPage.Resources>
+        <Style TargetType="{x:Type Grid}" x:Key="sklCardStyle">
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="Margin" Value="10,0"/>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="home.png" Text="Home" Name="Menu" Priority="0" Order="Primary" Command="{Binding HomeCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView >
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout Spacing="0" >
+                    <StackLayout BackgroundColor="#e6e6e6" HeightRequest="40" Margin="0,30,0,0">
+                        <Label Text="Sounds" VerticalOptions="Center" Margin="20,6,0,0"/>
+                    </StackLayout>
+                    <Frame Margin="20,20,20,0">
+                        <Grid Style="{StaticResource sklCardStyle}">
+                            <Label Text="Enable Sounds" VerticalOptions="Center"/>
+                            <Switch IsToggled="{Binding HasEnabledSounds}" HorizontalOptions="End"/>
+                        </Grid>
+                    </Frame>
+                    <Frame Margin="20,20,20,0">
+                        <Grid Style="{StaticResource sklCardStyle}">
+                            <Label Text="Order Complete" VerticalOptions="Center"/>
+                            <Switch IsToggled="{Binding HasOrderComplete}" HorizontalOptions="End"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Spacing="0" >
+                    <StackLayout BackgroundColor="#e6e6e6" HeightRequest="40" Margin="0,30,0,0">
+                        <Label Text="Sign In" VerticalOptions="Center" Margin="20,7,0,0"/>
+                    </StackLayout>
+                    <Frame Margin="20,20,20,0">
+                        <Grid Style="{StaticResource sklCardStyle}">
+                            <Label Text="Order Complete" VerticalOptions="Center"/>
+                            <Switch IsToggled="{Binding HasOrderComplete}" HorizontalOptions="End"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+                <StackLayout Grid.Row="2" Spacing="0" >
+                    <StackLayout BackgroundColor="#e6e6e6" HeightRequest="40" Margin="0,30,0,0">
+                        <Label Text="General" VerticalOptions="Center" Margin="20,8,0,0"/>
+                    </StackLayout>
+                    <Frame Margin="20">
+                        <StackLayout>
+                            <Grid Style="{StaticResource sklCardStyle}">
+                                <Label Text="Default State" VerticalOptions="Center"/>
+                                <Label Text="State" HorizontalOptions="End" VerticalOptions="Center"/>
+                            </Grid>
+                            <Grid Style="{StaticResource sklCardStyle}">
+                                <Label Text="Default Zip" VerticalOptions="Center"/>
+                                <Label Text="ZiP" HorizontalOptions="End" VerticalOptions="Center"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

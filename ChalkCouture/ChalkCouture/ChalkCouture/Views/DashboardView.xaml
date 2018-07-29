@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ChalkCouture"
+             vm:ViewModelLocator.AutoWireViewModel="True" Title="Home"
+             x:Class="ChalkCouture.Views.DashboardView">
+    <ContentPage.Resources>
+        <Style TargetType="{x:Type StackLayout}" x:Key="stlStyle">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="Margin" Value="2,20,0,0"/>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="RoundedBtnStyle">
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="BorderRadius" Value="25"/>
+            <Setter Property="WidthRequest" Value="50"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Accocunt" Order="Secondary"  Priority="1" Command="{Binding AccountCommand}"/>
+        <ToolbarItem Text="Settings" Order="Secondary" Priority="1" Command="{Binding SettingsCommand}"/>
+        <ToolbarItem Text="Notifications" Order="Secondary" Priority="1" Command="{Binding NotificationsCommand}"/>
+        <ToolbarItem Text="Help" Order="Secondary" Priority="1" Command="{Binding HelpCommand}"/>
+        <ToolbarItem Text="Sign Out" Order="Secondary" Priority="1" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="0.6*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout BackgroundColor="#e7e7e7" Grid.ColumnSpan="3">
+                <Image Source="logo.png" HeightRequest="40" Margin="0,20,0,0" VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Grid.Row="1" Style="{StaticResource stlStyle}">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CustomersCommand}" />
+                </StackLayout.GestureRecognizers>
+                <Button Image="customer.png" Command="{Binding CustomersCommand}" Style="{StaticResource RoundedBtnStyle}"/>
+                <Label Text="Customers" HorizontalOptions="Center" FontSize="10"/>
+            </StackLayout>
+            <StackLayout Grid.Row="1" Grid.Column="1" Style="{StaticResource stlStyle}">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding InventoryCommand}" />
+                </StackLayout.GestureRecognizers>
+                <Button Image="inventory.png" Command="{Binding InventoryCommand}" Style="{StaticResource RoundedBtnStyle}"/>
+                <Label Text="Inventory" HorizontalOptions="Center" FontSize="10"/>
+            </StackLayout>
+            <StackLayout Grid.Row="1" Grid.Column="2" Style="{StaticResource stlStyle}">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TransferCommand}" />
+                </StackLayout.GestureRecognizers>
+                <Button Image="transfer.png" Command="{Binding TransferCommand}" Style="{StaticResource RoundedBtnStyle}"/>
+                <Label Text="Transfer" HorizontalOptions="Center" FontSize="10"/>
+            </StackLayout>
+            <StackLayout Grid.Row="2" VerticalOptions="Start" Style="{StaticResource stlStyle}">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OrdersCommand}" />
+                </StackLayout.GestureRecognizers>
+                <Button Image="order.png" Command="{Binding OrdersCommand}" Style="{StaticResource RoundedBtnStyle}"/>
+                <Label Text="Orders" HorizontalOptions="Center" FontSize="10"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

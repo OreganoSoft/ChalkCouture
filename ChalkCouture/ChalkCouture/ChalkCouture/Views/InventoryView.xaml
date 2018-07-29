@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              Title="Inventory"
+              xmlns:vm="clr-namespace:ChalkCouture"
+             vm:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:b="clr-namespace:ChalkCouture.Behaviours"
+             xmlns:effects="clr-namespace:ChalkCouture.Effects"
+             x:Class="ChalkCouture.Views.InventoryView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Transfer Inventory" Order="Secondary"  Priority="1" Command="{Binding TransferInventoryCommand}"/>
+        <ToolbarItem Icon="home.png" Text="Home" Priority="0" Order="Primary" Command="{Binding HomeCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="120"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid BackgroundColor="#e7e7e7" RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="230"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="Inventory" Margin="25,10,0,5"/>
+                <Label Grid.Row="1" FontSize="11" Text="{Binding CustomersCount,StringFormat='Item has {0} on hand'}" Margin="25,5,0,2" VerticalOptions="Center" TextColor="#20d1c4" />
+                <Entry Grid.Row="2" Text="{Binding SearchText}" FontSize="12" WidthRequest="100" Placeholder="Search" Margin="20,0,0,2">
+                    <Entry.Effects>
+                        <effects:ClearEntryEffect/>
+                    </Entry.Effects>
+                </Entry>
+            </Grid>
+            <ListView Grid.Row="1" SeparatorVisibility="None" Margin="0,10" HasUnevenRows="true" ItemsSource="{Binding Customers}" 
+                  b:ItemTappedCommandListView.ItemTappedCommand="{Binding OnMenuSelectedCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Margin="25,10,30,10" Padding="10" HasShadow="True">
+                                <Grid VerticalOptions="CenterAndExpand" Margin="0,2,10,0" HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="horizontalmenu.png" VerticalOptions="Center"/>
+                                    <StackLayout Grid.Column="1" Margin="0,0,10,0" HorizontalOptions="StartAndExpand">
+                                        <Label VerticalOptions="FillAndExpand" Margin="10,0,0,0" VerticalTextAlignment="Center" Text="{Binding FirstName}" LineBreakMode="TailTruncation" FontAttributes="Bold" FontSize="Medium"/>
+                                        <Label VerticalOptions="FillAndExpand" Margin="10,0,0,0" VerticalTextAlignment="Center" Text="{Binding Email}" FontSize="10" TextColor="Gray"/>
+                                        <Label VerticalOptions="FillAndExpand" Margin="10,0,0,0" VerticalTextAlignment="Center" Text="{Binding Mobile}" FontSize="10" TextColor="Gray"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

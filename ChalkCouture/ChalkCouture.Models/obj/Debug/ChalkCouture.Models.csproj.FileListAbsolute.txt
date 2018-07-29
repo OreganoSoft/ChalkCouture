@@ -1,0 +1,5 @@
+D:\Raghava\office\WPF\MVVM\zyx\xxx\yyy\ChalkCouture\ChalkCouture.Models\bin\Debug\ChalkCouture.Models.dll
+D:\Raghava\office\WPF\MVVM\zyx\xxx\yyy\ChalkCouture\ChalkCouture.Models\bin\Debug\ChalkCouture.Models.pdb
+D:\Raghava\office\WPF\MVVM\zyx\xxx\yyy\ChalkCouture\ChalkCouture.Models\obj\Debug\ChalkCouture.Models.csproj.CoreCompileInputs.cache
+D:\Raghava\office\WPF\MVVM\zyx\xxx\yyy\ChalkCouture\ChalkCouture.Models\obj\Debug\ChalkCouture.Models.dll
+D:\Raghava\office\WPF\MVVM\zyx\xxx\yyy\ChalkCouture\ChalkCouture.Models\obj\Debug\ChalkCouture.Models.pdb

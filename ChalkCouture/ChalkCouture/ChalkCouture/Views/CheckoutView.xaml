@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ChalkCouture"
+             vm:ViewModelLocator.AutoWireViewModel="True" Title="Checkout"
+             x:Class="ChalkCouture.Views.CheckoutView">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="home.png" Text="Home" Command="{Binding HomeCommand}" Priority="1" Order="Primary"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView >
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackLayout BackgroundColor="#e7e7e7">
+                    <Label Text="Order Number : 147869" VerticalOptions="Center" FontSize="14" Margin="25,15,0,0"/>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Margin="25,0">
+                    <Frame Margin="0,20" Padding="15">
+                        <StackLayout>
+                            <Label Text="Customer Email" FontSize="10"/>
+                            <Entry Placeholder="Name" Text="DavidJhon@gmail.com" Margin="-4,-4,0,0"/>
+                        </StackLayout>
+                    </Frame>
+                    <Frame Padding="15">
+                        <StackLayout Spacing="10">
+                            <Grid>
+                                <Label Text="Status"/>
+                                <Label Text="Open" HorizontalOptions="End" TextColor="{StaticResource SecondaryColor}"/>
+                            </Grid>
+                            <Grid>
+                                <Label Text="Order total"/>
+                                <Label Text="$9.60" HorizontalOptions="End" TextColor="{StaticResource SecondaryColor}"/>
+                            </Grid>
+                            <Grid>
+                                <Label Text="Payment Total"/>
+                                <Label Text="$9.60" HorizontalOptions="End" TextColor="{StaticResource SecondaryColor}"/>
+                            </Grid>
+                            <Grid>
+                                <Label Text="Remaining Due"/>
+                                <Label Text="$9.60" HorizontalOptions="End" TextColor="{StaticResource SecondaryColor}"/>
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="End" Margin="0,20" >
+                        <Frame BackgroundColor="{StaticResource SecondaryColor}" HeightRequest="30" Padding="0" WidthRequest="70">
+                            <Grid>
+                                <Image Source="refreshIcon.png"/>
+                                <Label Text="Cash" HorizontalOptions="End" VerticalOptions="Center" Margin="10,0"/>
+                            </Grid>
+                        </Frame>
+                        <Frame BackgroundColor="{StaticResource SecondaryColor}" HeightRequest="30" Padding="0" Margin="10,0">
+                            <Grid >
+                                <Image Source="refreshIcon.png"/>
+                                <Label Text="Credit" HorizontalOptions="End" VerticalOptions="Center" Margin="10,0"/>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

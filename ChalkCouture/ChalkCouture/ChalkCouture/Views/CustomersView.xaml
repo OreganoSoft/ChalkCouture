@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:ChalkCouture"
+             vm:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:b="clr-namespace:ChalkCouture.Behaviours" Title="Customers"
+             x:Class="ChalkCouture.Views.CustomersView">
+    <ContentPage.ToolbarItems>
+
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid BackgroundColor="#e7e7e7" HorizontalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="60"/>
+                </Grid.ColumnDefinitions>
+                <Label Text="{Binding CustomersCount,StringFormat=' {0} customers'}" Margin="20,0,0,0" VerticalOptions="Center" TextColor="#20d1c4" />
+                <Image Source="refreshicon.png" HorizontalOptions="Start" VerticalOptions="Center" Grid.Column="1">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding RefreshCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+            <ListView Grid.Row="1" SeparatorVisibility="None" HasUnevenRows="true" ItemsSource="{Binding Customers}" 
+                  b:ItemTappedCommandListView.ItemTappedCommand="{Binding OnMenuSelectedCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid VerticalOptions="CenterAndExpand" Margin="0,4,0,0" Padding="15,10" HorizontalOptions="FillAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="60"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout >
+                                    <Label VerticalOptions="FillAndExpand" Margin="10,0,0,0" VerticalTextAlignment="Center" Text="{Binding FirstName}" FontAttributes="Bold" FontSize="Medium"/>
+                                    <Label VerticalOptions="FillAndExpand" Margin="10,0,0,0" VerticalTextAlignment="Center" Text="{Binding Email}" FontSize="10" TextColor="Gray"/>
+                                    <Label VerticalOptions="FillAndExpand" Margin="10,0,0,0" VerticalTextAlignment="Center" Text="{Binding Mobile}" FontSize="10" TextColor="Gray"/>
+                                </StackLayout>
+                                <Image Source="horizontalmenu.png" Grid.Column="1" VerticalOptions="Center"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Grid Grid.RowSpan="2" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand" Margin="0,0,30,5">
+                <Image x:Name="addTaskImage" Source="plusfilled50.png" HeightRequest="50" WidthRequest="60" Opacity="1">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding AddCommand}"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
